@@ -1,7 +1,6 @@
-locals {
-  AWS_ACCESS_KEY = "AKIA56GAXAIF7O523BZS"
-  AWS_SECRET_KEY = "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"
-  BUCKET         = "MY_BUCKET"
+variable "BUCKET" {
+  type    = string
+  default = "MY_BUCKET"
 }
 
 variable "AWS_REGION" {
