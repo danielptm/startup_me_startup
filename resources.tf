@@ -1,21 +1,21 @@
 provider "aws" {
-  region                  = "us-east-1"
+  region                  = var.AWS_REGION
   shared_credentials_file = "/Users/danieltuttle/.aws/credentials"
   profile                 = "default"
 }
 
-resource "aws_instance" "example" {
-  ami           = "ami-13be557e"
-  instance_type = "t2.small"
+module "ec2" {
+  source = "./ec2"
 }
 
-#
-# resource "aws_s3_bucket" "b" {
-#   bucket = var.BUCKET
-#   acl    = "private"
-#
-#   tags = {
-#     Name        = var.BUCKET
-#     Environment = "Dev"
-#   }
-# }
+module "s3" {
+  source = "./s3"
+}
+
+module "dynamo" {
+  source = "./db"
+}
+
+module "route53" {
+  source = "./route53"
+}
