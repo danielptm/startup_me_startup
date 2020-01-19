@@ -97,7 +97,7 @@ resource "aws_codepipeline" "codepipeline" {
     name = "Build"
 
     action {
-      name             = "Build"
+      name             = var.DOMAIN_NAME
       category         = "Build"
       owner            = "AWS"
       provider         = "CodeBuild"
@@ -106,7 +106,7 @@ resource "aws_codepipeline" "codepipeline" {
       version          = "1"
 
       configuration = {
-        ProjectName = "test"
+        ProjectName = var.DOMAIN_NAME
       }
     }
   }
