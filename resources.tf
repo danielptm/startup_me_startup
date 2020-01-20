@@ -20,10 +20,14 @@ provider "aws" {
 #   source = "./route53"
 # }
 
+module "pipeline" {
+  source = "./pipeline"
+}
+
 module "build" {
   source = "./build"
 }
 
-module "pipeline" {
-  source = "./pipeline"
+module "deploy" {
+  source = "./deploy"
 }
